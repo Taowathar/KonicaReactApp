@@ -1,21 +1,25 @@
 ﻿import React from 'react';
-import { Nav, NavbarContainer, NavLogo, NavMenu, NavLinks, NavBtn, NavBtnLink } from './NavbarElements';
+import { Nav, NavbarContainer, NavLogo, NavMenu, NavLinks, NavBtn, NavBtnLink, UserContainer, NavUser } from './NavbarElements';
 
 
 
-const Navbar = () => {
-
+const Navbar = ({ user, loggedIn }) => {
+    if (loggedIn) console.log(user);
     return (
         <Nav>
             <NavbarContainer>
                 <NavLogo to='/'>KonicaMinolta</NavLogo>
                 <NavMenu>
-                    <NavLinks to="/documents">Documents</NavLinks>
+                    {loggedIn ? <NavLinks to="/documents">Documents</NavLinks>: null}
                 </NavMenu>
-                <NavBtn>
-                    <NavBtnLink to="/signup">Sign Up</NavBtnLink>
-                    <NavBtnLink to="/signin">Sign In</NavBtnLink>
-                </NavBtn>
+                {!loggedIn ?
+                    <NavBtn>
+                        <NavBtnLink to="/signup">Sign Up</NavBtnLink>
+                        <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                    </NavBtn> :
+                    <NavBtn>
+                        <NavBtnLink to="logout">Logout</NavBtnLink>
+                    </NavBtn>}
             </NavbarContainer>
         </Nav>
     );

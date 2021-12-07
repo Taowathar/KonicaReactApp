@@ -2,11 +2,11 @@
 import Navbar from '../components/Navbar'
 
 
-const Home = ({ user }) => {
+const Home = ({ user, loggedIn }) => {
 
     return (
         <>
-            <Navbar />
+            <Navbar user={user} loggedIn={loggedIn} />
         </>
     );
 }
