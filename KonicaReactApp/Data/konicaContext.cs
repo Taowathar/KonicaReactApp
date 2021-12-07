@@ -142,17 +142,17 @@ namespace KonicaReactApp.Data
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("password");
+                    .HasColumnName("Password");
 
                 entity.Property(e => e.Salt)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("salt");
+                    .HasColumnName("Salt");
 
                 entity.Property(e => e.UserName)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasColumnName("User_name");
+                    .HasColumnName("UserName");
             });
 
             OnModelCreatingPartial(modelBuilder);
