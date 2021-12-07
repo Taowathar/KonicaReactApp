@@ -12,7 +12,7 @@ const SignIn = ({ setUser, setLoggedIn, loggedIn }) => {
         e.preventDefault();
         axios.post("/api/user/login", userData).then(Response => {
             if (Response.data.userName === "wrong") {
-                alert.show("This email address is not registered");
+                alert.show("Invalid User Name");
                 return;
             }
             if (Response.data === "") {
