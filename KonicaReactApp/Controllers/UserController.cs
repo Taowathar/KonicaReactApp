@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KonicaReactApp.Models;
 using KonicaReactApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,12 @@ namespace KonicaReactApp.Controllers
         public UserController(IUserRepository userRepository)
         {
             this.SqlUserRepository = userRepository;
+        }
+
+        [HttpGet("name")]
+        public User GetUserByName(string name)
+        {
+            return SqlUserRepository.GetUserByName(name);
         }
     }
 }
