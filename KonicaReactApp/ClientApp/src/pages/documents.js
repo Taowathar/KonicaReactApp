@@ -6,7 +6,7 @@ const DocumentListPage = ({ user, loggedIn }) => {
     return (
         <>
             <Navbar user={user} loggedIn={loggedIn} />
-            <DocumentList />
+            <DocumentList loggedIn={loggedIn} />
         </>
     );
 }

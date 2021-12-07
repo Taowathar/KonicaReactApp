@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TableContainer, DocumentsTable, TableHead, TableHeader, HeaderCell, TableBody } from './DocumentListElements'
 import Document from '../Document';
 
-const DocumentList = () => {
+const DocumentList = ({ loggedIn }) => {
     let [documents, setDocuments] = useState(null);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const DocumentList = () => {
 
     return (
         <TableContainer>
-            { documents ?
+            { documents && loggedIn ?
                 <DocumentsTable>
                     <TableHead>
                         <TableHeader>
@@ -30,7 +30,6 @@ const DocumentList = () => {
                             <Document key={document.id} document={document} />
                         ))}
                     </TableBody>
-
                 </DocumentsTable>
                 : null}
         </TableContainer>
