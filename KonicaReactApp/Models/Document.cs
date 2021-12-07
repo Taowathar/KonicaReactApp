@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace KonicaReactApp.Models
 {
-    public partial class Dokumentumok
+    public partial class Document
     {
         public int Id { get; set; }
         public string Title { get; set; }
