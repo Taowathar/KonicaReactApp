@@ -35,6 +35,7 @@ export const NavLogo = styled(Link)`
 
     &:hover {
         text-decoration: none;
+        color: cadetblue;
     }
 `;
 
@@ -81,7 +82,7 @@ export const NavBtnLink = styled(Link)`
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        background: #fff;
+        background: cadetblue;
         color: #010606;
         text-decoration: none;
     }
