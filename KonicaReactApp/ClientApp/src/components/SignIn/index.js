@@ -9,7 +9,6 @@ const SignIn = ({ setUser, setLoggedIn, loggedIn }) => {
     const alert = useAlert();
 
     const login = (e) => {
-        console.log(userData);
         e.preventDefault();
         axios.post("/api/user/login", userData).then(Response => {
             if (Response.data.userName === "wrong") {
@@ -21,7 +20,6 @@ const SignIn = ({ setUser, setLoggedIn, loggedIn }) => {
                 return;
             } else {
                 setUser(Response.data);
-                console.log(userData);
                 setLoggedIn(true);
                 return;
             }
