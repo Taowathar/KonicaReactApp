@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using KonicaReactApp.Data;
+using KonicaReactApp.Services;
 
 namespace KonicaReactApp
 {
@@ -24,6 +25,7 @@ namespace KonicaReactApp
             services.AddControllers();
             services.AddHttpClient();
             services.AddControllersWithViews();
+            services.AddScoped<IUserRepository, SQLUserRepository>();
             services.AddDbContextPool<konicaContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
 
