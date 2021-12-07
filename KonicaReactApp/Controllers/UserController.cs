@@ -24,5 +24,20 @@ namespace KonicaReactApp.Controllers
         {
             return SqlUserRepository.GetUserByName(name);
         }
+
+        [HttpPost]
+        public void AddUser(User user)
+        {
+            var hashedPassword = HashPassword(user.Password);
+            user.Id = Guid.NewGuid().ToString("N");
+            user.Salt = hashedPassword.Item1;
+            user.Password = hashedPassword.Item2;
+            SqlUserRepository.AddUser(user);
+        }
+
+        private Tuple<byte[], string> HashPassword(string userPassword)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
