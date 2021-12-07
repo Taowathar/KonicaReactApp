@@ -70,7 +70,7 @@ export const NavBtnLink = styled(Link)`
     border-radius: 50px;
     background: #01bf71;
     white-space: nowrap;
-        margin: 0 10px;
+    margin: 0 10px;
     padding: 10px 22px;
     color: #010606;
     font-size: 16px;
@@ -87,3 +87,15 @@ export const NavBtnLink = styled(Link)`
         text-decoration: none;
     }
 `;
+
+export const UserContainer = styled.div`
+    margin-top: 18px;
+`;
+
+export const NavUser = styled.p`
+    color: #01bf71;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 20px;
+
+`

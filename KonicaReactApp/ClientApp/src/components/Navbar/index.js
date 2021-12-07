@@ -18,6 +18,7 @@ const Navbar = ({ user, loggedIn }) => {
                         <NavBtnLink to="/signin">Sign In</NavBtnLink>
                     </NavBtn> :
                     <NavBtn>
+                        <UserContainer><NavUser>{user.userName}</NavUser></UserContainer>
                         <NavBtnLink to="logout">Logout</NavBtnLink>
                     </NavBtn>}
             </NavbarContainer>
