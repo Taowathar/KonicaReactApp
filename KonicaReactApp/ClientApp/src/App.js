@@ -4,6 +4,7 @@ import Logout from "./components/Logout";
 import Home from './pages';
 import SignInPage from './pages/signin';
 import SignUpPage from './pages/signup';
+import DocumentListPage from './pages/documents';
 
 import './custom.css'
 
@@ -18,6 +19,7 @@ const App = () => {
                   <Route path="/signin" exact render={() => <SignInPage setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
                   <Route path="/signup" component={SignUpPage} exact />
                   <Route path="/logout" exact render={() => <Logout setUser={setUser} setLoggedIn={setLoggedIn} />} />
+                  <Route path="/documents" exact render={() => <DocumentListPage user={user} loggedIn={loggedIn} />} />
                 </Switch>
             </Router>
       );
