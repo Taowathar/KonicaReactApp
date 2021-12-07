@@ -9,10 +9,6 @@ namespace KonicaReactApp.Data
 {
     public partial class konicaContext : DbContext
     {
-        public konicaContext()
-        {
-        }
-
         public konicaContext(DbContextOptions<konicaContext> options)
             : base(options)
         {
@@ -105,7 +101,7 @@ namespace KonicaReactApp.Data
                     .HasColumnName("Login_time");
 
                 entity.HasOne(d => d.Event)
-                    .WithMany(p => p.Logins)
+                    .WithMany()
                     .HasForeignKey(d => d.EventId)
                     .HasConstraintName("FK_Logins_EventTypes");
             });
