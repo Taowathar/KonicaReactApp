@@ -2,7 +2,7 @@
 import Navbar from '../components/Navbar'
 
 
-const Home = () => {
+const Home = ({ user }) => {
 
     return (
         <>

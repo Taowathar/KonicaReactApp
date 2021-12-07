@@ -2,7 +2,7 @@
 
 import { Container, FormWrap, Icon, FormContent, Form, FormH1, FormLabel, FormInput, FormButton} from './SignInElements'
 
-const SignIn = () => {
+const SignIn = ({ setUser, setLoggedIn, loggedIn }) => {
 
     return (
         <>
