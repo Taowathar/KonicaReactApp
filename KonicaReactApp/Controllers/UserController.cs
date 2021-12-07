@@ -34,6 +34,22 @@ namespace KonicaReactApp.Controllers
             SqlUserRepository.AddUser(user);
         }
 
+        [HttpPost("login")]
+        public User CheckPassword(User user)
+        {
+            var currentUser = GetUserByName(user.UserName);
+            if (currentUser == null)
+            {
+                return new User { UserName = "wrong" };
+            }
+
+            if (currentUser.Password.Equals(HashPassword(user.Password, currentUser.Salt).Item2))
+            {
+                return currentUser;
+            }
+            return null;
+        }
+
         private Tuple<byte[], string> HashPassword(string userPassword, byte[] salt = null)
         {
             byte[] newSalt;
