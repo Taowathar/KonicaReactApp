@@ -1,10 +1,7 @@
 ﻿import React from 'react';
 import { Nav, NavbarContainer, NavLogo, NavMenu, NavLinks, NavBtn, NavBtnLink, UserContainer, NavUser } from './NavbarElements';
 
-
-
 const Navbar = ({ user, loggedIn }) => {
-    if (loggedIn) console.log(user);
     return (
         <Nav>
             <NavbarContainer>
