@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using KonicaReactApp.Models;
 using KonicaReactApp.Services;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonicaReactApp.Controllers
@@ -35,9 +34,27 @@ namespace KonicaReactApp.Controllers
             SqlUserRepository.AddUser(user);
         }
 
-        private Tuple<byte[], string> HashPassword(string userPassword)
+        private Tuple<byte[], string> HashPassword(string userPassword, byte[] salt = null)
         {
-            throw new NotImplementedException();
+            byte[] newSalt;
+            if (salt == null)
+            {
+                newSalt = new byte[128 / 8];
+                using var rngCsp = new RNGCryptoServiceProvider();
+                rngCsp.GetNonZeroBytes(newSalt);
+            }
+            else
+            {
+                newSalt = salt;
+            }
+
+            var hashedPassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                password: userPassword,
+                salt: newSalt,
+                prf: KeyDerivationPrf.HMACSHA256,
+                iterationCount: 100000,
+                numBytesRequested: 256 / 8));
+            return Tuple.Create(newSalt, hashedPassword);
         }
     }
 }
