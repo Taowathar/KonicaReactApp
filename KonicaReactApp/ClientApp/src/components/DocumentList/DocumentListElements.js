@@ -12,18 +12,23 @@ export const TableContainer = styled.div`
 export const DocumentsTable = styled.table`
     margin-top: 50px;
     width: 90%;
-    border-radius: 15px;
+    font-size: 25px;
 `;
 
 export const TableHead = styled.thead`
-    font-weight: 400;
+    text-align: center;
     background: #000;
     color: #fff;
 `;
 
 export const TableHeader = styled.tr`
+    height: 40px;
 `;
 
 export const HeaderCell = styled.th`
+    border: 1px solid #01bf71;
+`;
+
+export const TableBody = styled.tbody`
 
 `;
