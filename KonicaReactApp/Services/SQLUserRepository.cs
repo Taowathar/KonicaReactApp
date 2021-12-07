@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using KonicaReactApp.Data;
 using KonicaReactApp.Models;
 
@@ -19,17 +17,18 @@ namespace KonicaReactApp.Services
 
         public User GetUserByName(string userName)
         {
-            throw new NotImplementedException();
+            return _context.Users.FirstOrDefault(user => user.UserName == userName);
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return _context.Users;
         }
 
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Add(user);
+            _context.SaveChanges();
         }
     }
 }
