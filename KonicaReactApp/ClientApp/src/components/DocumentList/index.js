@@ -23,6 +23,7 @@ const DocumentList = ({ loggedIn }) => {
                             <HeaderCell>Extension</HeaderCell>
                             <HeaderCell>MainId</HeaderCell>
                             <HeaderCell>Source</HeaderCell>
+                            <HeaderCell>Time</HeaderCell>
                         </TableHeader>
                     </TableHead>
                     <TableBody>

@@ -9,6 +9,7 @@ const Document = ({ document }) => {
             <TableData>{document.extension}</TableData>
             <TableData>{document.mainId}</TableData>
             <TableData>{document.source}</TableData>
+            <TableData>{document.time}</TableData>
         </TableRow>
     );
 }
