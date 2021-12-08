@@ -18,8 +18,11 @@ namespace KonicaReactApp.Services
 
         public IQueryable<dynamic> GetAllEventsByDocumentId(int id)
         {
-            throw new NotImplementedException();
-
+            return _context.Naplos
+                .Join(_context.Esemenyek, naplo => naplo.EsemenyId, esemeny => esemeny.Id,
+                    (naplo, esemeny) => new {id = naplo.DokumentumId, title = esemeny.Title, time = naplo.HappenedAt})
+                .Where(esemeny => esemeny.id == id)
+                .OrderBy(esemeny => esemeny.time);
         }
     }
 }
