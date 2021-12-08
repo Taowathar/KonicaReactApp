@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { TableContainer, DocumentsTable, TableHead, TableHeader, HeaderCell, TableBody } from './DocumentListElements'
+import { TableContainer, DocumentsTable, TableHead, TableHeader, HeaderCell, TableBody, SearchFormContainer, Form, FormLabel, FormInput, FormButton } from './DocumentListElements'
 import Document from '../Document';
 
 const DocumentList = ({ loggedIn, setDocumentId }) => {
@@ -12,27 +12,46 @@ const DocumentList = ({ loggedIn, setDocumentId }) => {
         });
     }, []);
 
+    const search = () => {
+
+    };
+
+    const onChange = () => {
+
+    };
+
     return (
-        <TableContainer>
-            { documents && loggedIn ?
-                <DocumentsTable>
-                    <TableHead>
-                        <TableHeader>
-                            <HeaderCell>Id</HeaderCell>
-                            <HeaderCell>Title</HeaderCell>
-                            <HeaderCell>Extension</HeaderCell>
-                            <HeaderCell>MainId</HeaderCell>
-                            <HeaderCell>Source</HeaderCell>
-                        </TableHeader>
-                    </TableHead>
-                    <TableBody>
-                        {documents.map((document) => (
-                            <Document key={document.id} document={document} setDocumentId={setDocumentId} />
-                        ))}
-                    </TableBody>
-                </DocumentsTable>
+        <>
+            {loggedIn ?
+                <SearchFormContainer>
+                    <Form onSubmit={search}>
+                        <FormLabel htmlfor='for'>Search</FormLabel>
+                        <FormInput type='text' name="search" placeholder='search' required onChange={onChange} />
+                        <FormButton type='submit'>Search</FormButton>
+                    </Form>
+                </SearchFormContainer>
                 : null}
-        </TableContainer>
+            <TableContainer>
+                {documents && loggedIn ?
+                    <DocumentsTable>
+                        <TableHead>
+                            <TableHeader>
+                                <HeaderCell>Id</HeaderCell>
+                                <HeaderCell>Title</HeaderCell>
+                                <HeaderCell>Extension</HeaderCell>
+                                <HeaderCell>MainId</HeaderCell>
+                                <HeaderCell>Source</HeaderCell>
+                            </TableHeader>
+                        </TableHead>
+                        <TableBody>
+                            {documents.map((document) => (
+                                <Document key={document.id} document={document} setDocumentId={setDocumentId} />
+                            ))}
+                        </TableBody>
+                    </DocumentsTable>
+                    : null}
+            </TableContainer>
+        </>
     );
 }
 
