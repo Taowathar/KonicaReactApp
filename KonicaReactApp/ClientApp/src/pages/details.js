@@ -2,11 +2,11 @@
 import Navbar from '../components/Navbar'
 import DocumentDetails from '../components/DocumentDetails'
 
-const DetailsPage = ({ user, loggedIn, documentId }) => {
+const DetailsPage = ({ user, loggedIn, documentId, setDocumentId }) => {
     return (
         <>
             <Navbar user={user} loggedIn={loggedIn} />
-            <DocumentDetails documentId={documentId} />
+            <DocumentDetails documentId={documentId} setDocumentId={setDocumentId}/>
         </>
     );
 }

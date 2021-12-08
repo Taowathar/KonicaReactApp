@@ -5,14 +5,13 @@ const ChildDetail = ({ document, setDocumentId }) => {
 
     const setId = () => {
         setDocumentId(document.id);
-    }
+    };
 
     return (
         <TableRow>
             <TableData>{document.id}</TableData>
-            <TableData><ChildLink to={`/childdetails/${document.id}`} onClick={setId}>{document.title}</ChildLink></TableData>
+            <TableData><ChildLink to={`/details/${document.id}`} onClick={setId}>{document.title}</ChildLink></TableData>
             <TableData>{document.source}</TableData>
-            <TableData>{document.time}</TableData>
         </TableRow>
     );
 }
