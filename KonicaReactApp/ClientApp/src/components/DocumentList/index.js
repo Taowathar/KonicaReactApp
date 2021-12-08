@@ -5,6 +5,7 @@ import Document from '../Document';
 
 const DocumentList = ({ loggedIn, setDocumentId }) => {
     let [documents, setDocuments] = useState(null);
+    let [searchString, setSearchString] = useState(null);
 
     useEffect(() => {
         axios.get("api/document/0").then(response => {
@@ -12,12 +13,16 @@ const DocumentList = ({ loggedIn, setDocumentId }) => {
         });
     }, []);
 
-    const search = () => {
-
+    const search = (e) => {
+        e.preventDefault();
+        axios.get(`api/document/search/${searchString.search}`).then(response => {
+            setDocuments(response.data);
+        });
     };
 
-    const onChange = () => {
-
+    const onChange = (e) => {
+        e.persist();
+        setSearchString({ ...searchString, [e.target.name]: e.target.value });
     };
 
     return (
