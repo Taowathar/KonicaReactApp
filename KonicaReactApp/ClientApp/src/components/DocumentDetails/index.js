@@ -1,10 +1,21 @@
-﻿import React from 'react';
+﻿import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { DetailsH1,TableContainer, EventTable, EventTableHead, EventTableHeader, EventHeaderCell, EventTableBody, ChildTable, ChildTableHead, ChildTableHeader, ChildHeaderCell, ChildTableBody} from './DocumentDetailsElements'
+import EventDetail from '../EventDetail'
+import ChildDetail from '../ChildDetail'
 
 const DocumentDetails = ({ documentId }) => {
+    let [title, setTitle] = useState(null);
+
+    useEffect(() => {
+        axios.get(`api/document/title/${documentId}`).then(response => {
+            setTitle(response.data.title);
+        });
+    }, []);
+
     return (
         <>
-        <DetailsH1>TITLE</DetailsH1>
+        { title ? <DetailsH1>{title}</DetailsH1> : null }
         <TableContainer>
             <EventTable>
                 <EventTableHead>
@@ -21,6 +32,7 @@ const DocumentDetails = ({ documentId }) => {
             <ChildTable>
                 <ChildTableHead>
                     <ChildTableHeader>
+                        <ChildHeaderCell>Id</ChildHeaderCell>
                         <ChildHeaderCell>Title</ChildHeaderCell>
                         <ChildHeaderCell>Source</ChildHeaderCell>
                         <ChildHeaderCell>Time</ChildHeaderCell>
