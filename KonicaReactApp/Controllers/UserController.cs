@@ -18,12 +18,6 @@ namespace KonicaReactApp.Controllers
             this.SqlUserRepository = userRepository;
         }
 
-        [HttpGet("name")]
-        public User GetUserByName(string name)
-        {
-            return SqlUserRepository.GetUserByName(name);
-        }
-
         [HttpPost]
         public void AddUser(User user)
         {
@@ -48,6 +42,11 @@ namespace KonicaReactApp.Controllers
                 return currentUser;
             }
             return null;
+        }
+
+        private User GetUserByName(string name)
+        {
+            return SqlUserRepository.GetUserByName(name);
         }
 
         private Tuple<byte[], string> HashPassword(string userPassword, byte[] salt = null)

@@ -14,8 +14,8 @@ namespace KonicaReactApp.Data
         {
         }
 
-        public virtual DbSet<Dokumentumok> Dokumentumoks { get; set; }
-        public virtual DbSet<Esemeny> Esemenies { get; set; }
+        public virtual DbSet<Document> Dokumentumok { get; set; }
+        public virtual DbSet<Esemeny> Esemenyek { get; set; }
         public virtual DbSet<EventType> EventTypes { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Naplo> Naplos { get; set; }
@@ -33,7 +33,7 @@ namespace KonicaReactApp.Data
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<Dokumentumok>(entity =>
+            modelBuilder.Entity<Document>(entity =>
             {
                 entity.ToTable("dokumentumok");
 

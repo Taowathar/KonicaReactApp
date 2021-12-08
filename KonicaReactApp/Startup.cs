@@ -26,6 +26,8 @@ namespace KonicaReactApp
             services.AddHttpClient();
             services.AddControllersWithViews();
             services.AddScoped<IUserRepository, SQLUserRepository>();
+            services.AddScoped<IDocumentRepository, SQLDocumentRepository>();
+            services.AddScoped<INaploRepository, SQLNaploRepository>();
             services.AddDbContextPool<konicaContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
 
