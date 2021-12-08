@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
 
 namespace KonicaReactApp.Models
 {
@@ -9,7 +6,7 @@ namespace KonicaReactApp.Models
     {
         public int Id { get; set; }
         public string ClientIpAddress { get; set; }
-        public DateTime? LoginTime { get; set; }
+        public DateTime LoginTime { get; set; }
         public string LoginName { get; set; }
         public int? EventId { get; set; }
 

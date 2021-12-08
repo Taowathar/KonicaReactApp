@@ -1,9 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 using KonicaReactApp.Models;
-
-#nullable disable
 
 namespace KonicaReactApp.Data
 {

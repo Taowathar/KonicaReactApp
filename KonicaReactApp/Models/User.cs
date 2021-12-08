@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
-
+﻿
 namespace KonicaReactApp.Models
 {
-    public partial class User
+    public class User
     {
         public string Id { get; set; }
         public string UserName { get; set; }

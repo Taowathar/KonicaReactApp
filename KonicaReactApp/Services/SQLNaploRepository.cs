@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using KonicaReactApp.Data;
-using KonicaReactApp.Models;
 
 namespace KonicaReactApp.Services
 {
