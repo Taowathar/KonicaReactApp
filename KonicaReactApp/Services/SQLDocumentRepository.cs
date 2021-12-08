@@ -23,5 +23,10 @@ namespace KonicaReactApp.Services
         {
             return _context.Dokumentumok.First(doc => doc.Id == id);
         }
+
+        public IQueryable<Document> GetDocumentsBySearchString(string searchString)
+        {
+            return _context.Dokumentumok.FromSqlRaw($"GetDocumentsBySearch {searchString}");
+        }
     }
 }
