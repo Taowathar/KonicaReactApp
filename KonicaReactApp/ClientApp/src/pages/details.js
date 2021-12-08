@@ -6,7 +6,7 @@ const DetailsPage = ({ user, loggedIn, documentId, setDocumentId }) => {
     return (
         <>
             <Navbar user={user} loggedIn={loggedIn} />
-            <DocumentDetails documentId={documentId} setDocumentId={setDocumentId}/>
+            <DocumentDetails loggedIn={loggedIn} documentId={documentId} setDocumentId={setDocumentId}/>
         </>
     );
 }

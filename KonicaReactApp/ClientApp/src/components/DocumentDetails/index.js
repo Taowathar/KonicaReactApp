@@ -4,7 +4,7 @@ import { DetailsH1, TableContainer, EventTable, EventTableHead, EventTableHeader
 import EventDetail from '../EventDetail'
 import ChildDetail from '../ChildDetail'
 
-const DocumentDetails = ({ documentId, setDocumentId }) => {
+const DocumentDetails = ({ loggedIn, documentId, setDocumentId }) => {
     let [title, setTitle] = useState(null);
     let [events, setEvents] = useState(null);
     let [childDocuments, setChildDocuments] = useState(null);
@@ -25,9 +25,9 @@ const DocumentDetails = ({ documentId, setDocumentId }) => {
 
     return (
         <>
-            { title ? <DetailsH1>{title}</DetailsH1> : null}
+            { title && loggedIn ? <DetailsH1>{title}</DetailsH1> : null}
             <TableContainer>
-                {events ?
+                {events && loggedIn ?
                     <EventTable>
                         <EventTableHead>
                             <EventTableHeader>
@@ -42,7 +42,7 @@ const DocumentDetails = ({ documentId, setDocumentId }) => {
                         </EventTableBody>
                     </EventTable>
                     : null}
-                {childDocuments && childDocuments.length !== 0 ?
+                {childDocuments && childDocuments.length !== 0 && loggedIn ?
                     <ChildTable>
                         <ChildTableHead>
                             <ChildTableHeader>
