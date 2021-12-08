@@ -17,7 +17,7 @@ namespace KonicaReactApp.Controllers
         }
 
         [HttpGet("{mainId}")]
-        public IEnumerable<dynamic> GetDocumentsByMainId(int mainId)
+        public IEnumerable<Document> GetDocumentsByMainId(int mainId)
         {
             return SqlDocumentRepository.GetDocumentsByMainId(mainId);
         }
@@ -26,6 +26,12 @@ namespace KonicaReactApp.Controllers
         public Document GetDocumentById(int id)
         {
             return SqlDocumentRepository.GetDocumentById(id);
+        }
+
+        [HttpGet("search/{searchString}")]
+        public IEnumerable<Document> GetDocumentsBySearchString(string searchString)
+        {
+            return SqlDocumentRepository.GetDocumentsBySearchString(searchString);
         }
     }
 }

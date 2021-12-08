@@ -1,7 +1,4 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
-using KonicaReactApp.Models;
+﻿using System.Linq;
 
 namespace KonicaReactApp.Services
 {

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
 
 namespace KonicaReactApp.Models
 {
-    public partial class Naplo
+    public class Naplo
     {
         public int DokumentumId { get; set; }
         public int EsemenyId { get; set; }
