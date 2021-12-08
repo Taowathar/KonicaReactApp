@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TableContainer, DocumentsTable, TableHead, TableHeader, HeaderCell, TableBody } from './DocumentListElements'
 import Document from '../Document';
 
-const DocumentList = ({ loggedIn }) => {
+const DocumentList = ({ loggedIn, setDocumentId }) => {
     let [documents, setDocuments] = useState(null);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const DocumentList = ({ loggedIn }) => {
                     </TableHead>
                     <TableBody>
                         {documents.map((document) => (
-                            <Document key={document.id} document={document} />
+                            <Document key={document.id} document={document} setDocumentId={setDocumentId} />
                         ))}
                     </TableBody>
                 </DocumentsTable>
