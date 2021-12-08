@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KonicaReactApp.Models;
 using KonicaReactApp.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KonicaReactApp.Controllers
@@ -16,6 +18,16 @@ namespace KonicaReactApp.Controllers
         public LoginController(ILoginRepository loginRepository)
         {
             this.SqlLoginRepository = loginRepository;
+        }
+
+        [HttpPost]
+        public void AddLogin(Login login)
+        {   
+            login.Id = Guid.NewGuid().ToString("N");
+            login.ClientIpAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            login.LoginTime = DateTime.Now;
+
+            SqlLoginRepository.AddLogin(login);
         }
     }
 }
