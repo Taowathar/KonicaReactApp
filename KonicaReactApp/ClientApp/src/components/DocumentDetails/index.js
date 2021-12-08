@@ -6,10 +6,14 @@ import ChildDetail from '../ChildDetail'
 
 const DocumentDetails = ({ documentId }) => {
     let [title, setTitle] = useState(null);
+    let [events, setEvents] = useState(null);
 
     useEffect(() => {
         axios.get(`api/document/title/${documentId}`).then(response => {
             setTitle(response.data.title);
+        });
+        axios.get(`api/naplo/${documentId}`).then(response => {
+            setEvents(response.data);
         });
     }, []);
 
@@ -17,17 +21,21 @@ const DocumentDetails = ({ documentId }) => {
         <>
         { title ? <DetailsH1>{title}</DetailsH1> : null }
         <TableContainer>
-            <EventTable>
-                <EventTableHead>
-                    <EventTableHeader>
-                        <EventHeaderCell>Event</EventHeaderCell>
-                        <EventHeaderCell>Time</EventHeaderCell>
-                    </EventTableHeader>
-                </EventTableHead>
-                <EventTableBody>
-                    
-                </EventTableBody>
-            </EventTable>
+                {events ?
+                    <EventTable>
+                        <EventTableHead>
+                            <EventTableHeader>
+                                <EventHeaderCell>Event</EventHeaderCell>
+                                <EventHeaderCell>Time</EventHeaderCell>
+                            </EventTableHeader>
+                        </EventTableHead>
+                        <EventTableBody>
+                            {events.map((event) => (
+                                <EventDetail key={event.title} event={event} />
+                            ))}
+                        </EventTableBody>
+                    </EventTable>
+                    : null}
 
             <ChildTable>
                 <ChildTableHead>
