@@ -16,7 +16,7 @@ const Navbar = ({ user, loggedIn }) => {
                     </NavBtn> :
                     <NavBtn>
                         <UserContainer><NavUser>{user.userName}</NavUser></UserContainer>
-                        <NavBtnLink to="logout">Logout</NavBtnLink>
+                        <NavBtnLink to="/logout">Logout</NavBtnLink>
                     </NavBtn>}
             </NavbarContainer>
         </Nav>
