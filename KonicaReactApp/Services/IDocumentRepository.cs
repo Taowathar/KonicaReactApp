@@ -9,5 +9,6 @@ namespace KonicaReactApp.Services
     public interface IDocumentRepository
     {
         public IQueryable<dynamic> GetDocumentsByMainId(int mainId);
+        public Document GetDocumentById(int id);
     }
 }

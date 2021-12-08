@@ -21,5 +21,11 @@ namespace KonicaReactApp.Controllers
         {
             return SqlDocumentRepository.GetDocumentsByMainId(mainId);
         }
+
+        [HttpGet("title/{id}")]
+        public Document GetDocumentById(int id)
+        {
+            return SqlDocumentRepository.GetDocumentById(id);
+        }
     }
 }

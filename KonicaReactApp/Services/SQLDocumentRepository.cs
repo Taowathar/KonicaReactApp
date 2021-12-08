@@ -30,5 +30,10 @@ namespace KonicaReactApp.Services
                 .Select(doc => new { id = doc.Key.id, title = doc.Key.title, extension = doc.Key.extension, mainId = doc.Key.mainId, source = doc.Key.source, time = doc.Key.time })
                 .OrderBy(doc => doc.time);
         }
+
+        public Document GetDocumentById(int id)
+        {
+            return _context.Dokumentumok.First(doc => doc.Id == id);
+        }
     }
 }
