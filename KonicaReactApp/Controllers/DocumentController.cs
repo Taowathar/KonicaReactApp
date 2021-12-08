@@ -16,10 +16,10 @@ namespace KonicaReactApp.Controllers
             this.SqlDocumentRepository = documentRepository;
         }
 
-        [HttpGet("{id}")]
-        public IEnumerable<Document> GetDocumentsByMainId(int id)
+        [HttpGet("{mainId}")]
+        public IEnumerable<dynamic> GetDocumentsByMainId(int mainId)
         {
-            return SqlDocumentRepository.GetDocumentsByMainId(id);
+            return SqlDocumentRepository.GetDocumentsByMainId(mainId);
         }
     }
 }

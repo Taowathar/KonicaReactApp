@@ -8,6 +8,6 @@ namespace KonicaReactApp.Services
 {
     public interface IDocumentRepository
     {
-        public IEnumerable<Document> GetDocumentsByMainId(int id);
+        public IQueryable<dynamic> GetDocumentsByMainId(int mainId);
     }
 }
