@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using KonicaReactApp.Data;
 using KonicaReactApp.Models;
 
@@ -20,6 +17,16 @@ namespace KonicaReactApp.Services
         {
             _context.Logins.Add(login);
             _context.SaveChanges();
+        }
+
+        public int GetFailedLogins(string userName)
+        {
+            return _context.Logins.Count(login => login.LoginName == userName && login.EventId == 2);
+        }
+
+        public bool GetAccountDisabled(string userName)
+        {
+            return _context.Logins.Count(login => login.LoginName == userName && login.EventId == 3) != 0;
         }
     }
 }
