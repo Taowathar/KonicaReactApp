@@ -10,18 +10,31 @@ const SignIn = ({ setUser, setLoggedIn, loggedIn }) => {
 
     const login = (e) => {
         e.preventDefault();
-        axios.post("/api/user/login", userData).then(Response => {
-            if (Response.data.userName === "wrong") {
-                alert.show("Invalid User Name");
-                return;
-            }
-            if (Response.data === "") {
-                alert.show("Invalid Password");
-                return;
-            } else {
-                setUser(Response.data);
-                setLoggedIn(true);
-                return;
+        axios.get(`api/login/${userData.UserName}`).then(response => {
+            if (response.data === "disabled") alert.show("Your account is disabled");
+            else {
+                axios.post("/api/user/login", userData).then(Response => {
+                    if (Response.data.userName === "wrong") {
+                        alert.show("Invalid User Name");
+                        return;
+                    }
+                    if (Response.data === "") {
+                        if (response.data === "last") {
+                            axios.post("api/login", { LoginName: userData.UserName, EventId: 3 });
+                            alert.show("Invalid Password - Account disabled");
+                        }
+                        else {
+                            axios.post("api/login", { LoginName: userData.UserName, EventId: 2 });
+                            alert.show("Invalid Password");
+                        }
+                        return;
+                    } else {
+                        axios.post("api/login", { LoginName: userData.UserName, EventId: 1 });
+                        setUser(Response.data);
+                        setLoggedIn(true);
+                        return;
+                    }
+                });
             }
         });
     };
