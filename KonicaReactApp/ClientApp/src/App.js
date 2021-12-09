@@ -1,22 +1,31 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Logout from "./components/Logout";
+import Home from './pages';
+import SignInPage from './pages/signin';
+import SignUpPage from './pages/signup';
+import DocumentListPage from './pages/documents';
+import DetailsPage from './pages/details'
 
 import './custom.css'
 
-export default class App extends Component {
-  static displayName = App.name;
+const App = () => {
+    let [user, setUser] = useState();
+    let [loggedIn, setLoggedIn] = useState(false);
+    let [documentId, setDocumentId] = useState();
 
-  render () {
-    return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
-    );
+      return (
+          <Router>
+              <Switch>
+                  <Route path="/" exact render={() => <Home user={user} loggedIn={loggedIn} />} />
+                  <Route path="/signin" exact render={() => <SignInPage setUser={setUser} setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
+                  <Route path="/signup" component={SignUpPage} exact />
+                  <Route path="/logout" exact render={() => <Logout setUser={setUser} setLoggedIn={setLoggedIn} />} />
+                  <Route path="/documents" exact render={() => <DocumentListPage user={user} loggedIn={loggedIn} setDocumentId={setDocumentId} />} />
+                  <Route path="/details/:documentId" exact render={() => <DetailsPage user={user} loggedIn={loggedIn} documentId={documentId} setDocumentId={setDocumentId} />} />
+                </Switch>
+            </Router>
+      );
   }
-}
+
+  export default App;
